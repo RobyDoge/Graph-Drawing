@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Arches.h"
+#include <fstream>
 class Graph
 {
 public:
@@ -13,13 +14,17 @@ public:
 	void addNode(QPoint coordinate);
 	void addArch(Arch arch);
 	void addArch(Node firstNode, Node secondNode);
-
-
+	void createNewSpace();
+	void createNewDirectedArch(Arch arch);
+	void createNewNonDirectedArch(Arch arch);
 
 
 private:
+	
+	void updateFile();
+
 	std::vector<Node> m_nodes;
 	std::vector<Arch> m_arches;
-
+	std::vector<std::vector<int>> m_adjacencyMatrix;
 };
 
