@@ -5,13 +5,15 @@ DesenareGrafuri::DesenareGrafuri(QWidget *parent)
 {
     ui.setupUi(this);
 
-    QWidget* radioWidget = new QWidget(this);
-    QVBoxLayout* radioLayout = new QVBoxLayout(radioWidget);
-    QRadioButton* directedRadioButton = new QRadioButton("Directed Graph");
-    connect(directedRadioButton, &QRadioButton::clicked, this, [this]() { setTypeOfGraph(0); update(); });
-    radioLayout->addWidget(directedRadioButton);
-    radioWidget->setLayout(radioLayout);
-    setTypeOfGraph(1);
+    //QWidget* radioWidget = new QWidget(this);
+    //QVBoxLayout* radioLayout = new QVBoxLayout(radioWidget);
+    //QRadioButton* directedRadioButton = new QRadioButton("Directed Graph");
+    connect(m_ButtonDirectedGraph, &QRadioButton::clicked, this, [this]() { setTypeOfGraph(1); update(); });
+    //radioLayout->addWidget(directedRadioButton);
+    //radioWidget->setLayout(radioLayout);
+    //setTypeOfGraph(1);
+
+
     m_firstNode.setValue(-1);
 }
 

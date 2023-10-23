@@ -8,6 +8,7 @@
 #include <qradiobutton.h>
 #include <QVBoxLayout>
 
+
 class DesenareGrafuri : public QMainWindow
 {
     Q_OBJECT
@@ -28,5 +29,6 @@ private:
     Ui::DesenareGrafuriClass ui;
     Graph m_graph;
     Node m_firstNode;
-    bool m_TypeOfGraph; //1 - directed graph, 0 - non-directed graph
+    bool m_TypeOfGraph=1; //1 - directed graph, 0 - non-directed graph
+    QRadioButton* m_ButtonDirectedGraph = findChild<QRadioButton*>("DirectedGraph");
 };
