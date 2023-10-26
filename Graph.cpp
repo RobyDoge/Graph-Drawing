@@ -30,15 +30,24 @@ void Graph::addNode(QPoint coordinate)
 
 }
 
-void Graph::addArch(Arch arch)
+void Graph::addArch(Arch arch, bool typeOfGraph)
 {
-    m_arches.push_back(arch);
+    if (typeOfGraph)
+    {
+        createNewDirectedArch(arch);
+    }
+    else createNewNonDirectedArch(arch);
 }
 
-void Graph::addArch(Node firstNode, Node secondNode)
+
+void Graph::addArch(Node firstNode, Node secondNode,bool typeOfGraph)
 {
     Arch arch(firstNode, secondNode);
-    m_arches.push_back(arch);
+    if (typeOfGraph)
+    {
+        createNewDirectedArch(arch);
+    }
+    else createNewNonDirectedArch(arch);
 }
 
 void Graph::createNewSpace()

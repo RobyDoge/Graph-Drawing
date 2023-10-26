@@ -12,8 +12,8 @@ public:
 
 	void addNode(Node node);
 	void addNode(QPoint coordinate);
-	void addArch(Arch arch);
-	void addArch(Node firstNode, Node secondNode);
+	void addArch(Arch arch, bool typeOfGraph);
+	void addArch(Node firstNode, Node secondNode,bool typeOfGraph);
 	void createNewSpace();
 	void createNewDirectedArch(Arch arch);
 	void createNewNonDirectedArch(Arch arch);
@@ -22,7 +22,6 @@ public:
 private:
 	
 	void updateFile();
-
 	std::vector<Node> m_nodes;
 	std::vector<Arch> m_arches;
 	std::vector<std::vector<int>> m_adjacencyMatrix;

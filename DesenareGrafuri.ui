@@ -27,6 +27,19 @@
      <string>Directed Graph</string>
     </property>
    </widget>
+   <widget class="QRadioButton" name="NonDirectedGraph">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>0</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NonDirected Graph</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
