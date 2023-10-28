@@ -32,22 +32,33 @@ void Graph::addNode(QPoint coordinate)
 
 void Graph::addArch(Arch arch, bool typeOfGraph)
 {
-    if (typeOfGraph)
+    if (typeOfGraph&&validateDirectedArch(arch))
     {
+        m_arches.push_back(arch);
         createNewDirectedArch(arch);
     }
-    else createNewNonDirectedArch(arch);
+    else if(!typeOfGraph && validateNonDirectedArch(arch))
+    {
+        m_arches.push_back(arch);
+        createNewNonDirectedArch(arch);
+    }
+    
 }
 
 
 void Graph::addArch(Node firstNode, Node secondNode,bool typeOfGraph)
 {
     Arch arch(firstNode, secondNode);
-    if (typeOfGraph)
+    if (typeOfGraph && validateDirectedArch(arch))
     {
+        m_arches.push_back(arch);
         createNewDirectedArch(arch);
     }
-    else createNewNonDirectedArch(arch);
+    else if (!typeOfGraph && validateNonDirectedArch(arch))
+    {
+        m_arches.push_back(arch);
+        createNewNonDirectedArch(arch);
+    }
 }
 
 void Graph::createNewSpace()
@@ -76,6 +87,32 @@ void Graph::createNewDirectedArch(Arch arch)
     m_adjacencyMatrix[arch.getFirstNode().getValue()][arch.getSecondNode().getValue()] = 1;
     updateFile();
 }
+
+bool Graph::validateDirectedArch(Arch arch)
+{
+    for (auto aux : m_arches)
+    {
+        if (aux.getFirstNode().getValue() == arch.getFirstNode().getValue()
+            && aux.getSecondNode().getValue() == arch.getSecondNode().getValue())
+        {
+            return false;
+        }
+    }
+    return true;
+}
+bool Graph::validateNonDirectedArch(Arch arch)
+{
+    for (auto aux : m_arches)
+    {
+        if ((aux.getFirstNode().getValue() == arch.getFirstNode().getValue()
+            && aux.getSecondNode().getValue() == arch.getSecondNode().getValue())
+            || (aux.getFirstNode().getValue() == arch.getSecondNode().getValue()
+            && aux.getSecondNode().getValue() == arch.getFirstNode().getValue()))
+            return false;
+    }
+    return true;
+}
+
 
 void Graph::updateFile()
 {

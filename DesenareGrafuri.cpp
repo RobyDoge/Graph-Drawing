@@ -81,35 +81,35 @@ void DesenareGrafuri::paintEvent(QPaintEvent* e)
     }
 
     std::vector<Arch> arches = m_graph.getArches();
+    qDebug() << arches.size();
     for (Arch& a : arches)
     {
         p.drawLine(a.getFirstNode().getX(), a.getFirstNode().getY(),
             a.getSecondNode().getX(), a.getSecondNode().getY());
 
-        //if(m_TypeOfGraph==1)
-        //{
-        //    double angle = std::atan2(a.getSecondNode().getY() - a.getFirstNode().getY(),
-        //        a.getSecondNode().getX() - a.getFirstNode().getX());
-        //    double arrowLength = 10.0;
+        if(m_TypeOfGraph==1)
+        {
+            double angle = std::atan2(a.getSecondNode().getY() - a.getFirstNode().getY(),
+                a.getSecondNode().getX() - a.getFirstNode().getX());
+            double arrowLength = 10.0;
 
-        //    double arrowX1 = a.getSecondNode().getX() - arrowLength * std::cos(angle - M_PI / 6);
-        //    double arrowY1 = a.getSecondNode().getY() - arrowLength * std::sin(angle - M_PI / 6);
-        //    double arrowX2 = a.getSecondNode().getX() - arrowLength * std::cos(angle + M_PI / 6);
-        //    double arrowY2 = a.getSecondNode().getY() - arrowLength * std::sin(angle + M_PI / 6);
+            double arrowX1 = a.getSecondNode().getX() - arrowLength * std::cos(angle - M_PI / 6);
+            double arrowY1 = a.getSecondNode().getY() - arrowLength * std::sin(angle - M_PI / 6);
+            double arrowX2 = a.getSecondNode().getX() - arrowLength * std::cos(angle + M_PI / 6);
+            double arrowY2 = a.getSecondNode().getY() - arrowLength * std::sin(angle + M_PI / 6);
 
 
-        //    QPolygonF arrowhead;
-        //    arrowhead.append(QPointF(a.getSecondNode().getX(), a.getSecondNode().getY()));
-        //    arrowhead.append(QPointF(arrowX1, arrowY1));
-        //    arrowhead.append(QPointF(arrowX2, arrowY2));
+            QPolygonF arrowhead;
+            arrowhead.append(QPointF(a.getSecondNode().getX(), a.getSecondNode().getY()));
+            arrowhead.append(QPointF(arrowX1, arrowY1));
+            arrowhead.append(QPointF(arrowX2, arrowY2));
 
-        //    p.setBrush(Qt::black);
-        //    p.setPen(Qt::black);
-        //    p.drawPolygon(arrowhead);
-        //    /*m_graph.createNewDirectedArch(a);
-        //    continue;*/
-        //}
-        //m_graph.createNewNonDirectedArch(a);
+            p.setBrush(Qt::black);
+            p.setPen(Qt::black);
+            p.drawPolygon(arrowhead);
+           
+        }
+   
     }
 
     if (m_firstNode.getValue() >= 0)

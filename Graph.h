@@ -20,7 +20,9 @@ public:
 
 
 private:
-	
+
+	bool validateDirectedArch(Arch arch);
+	bool validateNonDirectedArch(Arch arch);
 	void updateFile();
 	std::vector<Node> m_nodes;
 	std::vector<Arch> m_arches;
